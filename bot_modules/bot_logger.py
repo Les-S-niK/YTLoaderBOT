@@ -18,7 +18,7 @@ logger.add(
 def start_logger() -> None:
     """Logger for bot starting.
     """
-    logger.info(f"""
+    logger.debug(f"""
     |------------------------------>
     | Bot {BOT_NAME} was launched!
     |------------------------------>
@@ -43,7 +43,7 @@ def error_logger(error: Exception) -> None:
 def on_ready_logger() -> None:
     """Logger for bot commands starting.
     """
-    logger.info(f"""
+    logger.debug(f"""
     |------------------------------>
     | Bot {BOT_NAME} is ready to work!
     |------------------------------>
@@ -73,4 +73,34 @@ def command_logger(command: str,
     | Channel: {channel_name},
     | Guild: {guild_name},
     | Args: {command_args}
+    """)
+    
+## Logger for starting youtube request.
+def init_youtube_request(url: str, title: str, video_id: int,) -> None:
+    """Logging the initialization of downloader.
+
+    Args:
+        url (str): video url.
+        title (str): video title.
+        video_id (int): video_id.
+    """
+    
+    logger.debug(f"""
+    | INITIALIZATION THE DOWNLOADER 
+    | URL: {url}
+    | TITLE: {title}
+    | VIDEO ID: {video_id}
+    """)
+
+## Logger for checking if file was downloaded.
+def downloading_completed(filename: str) -> None:
+    """Logging the completed download.
+
+    Args:
+        filename (str): name of file.
+    """
+    
+    logger.info(f"""
+    | FILE DOWNLOADED 
+    | FILENAME: {filename}
     """)

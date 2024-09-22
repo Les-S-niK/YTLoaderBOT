@@ -22,10 +22,12 @@ class Events(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot: Bot = bot
         
+        
     ## Starts if bot is ready to work.
     @Cog.listener(name="on_ready")
     async def on_ready(self) -> None:
         on_ready_logger()
+    
     
     ## Calls on error in command.
     @Cog.listener(name="on_command_error")
@@ -69,6 +71,7 @@ class Events(Cog):
             )
             error_logger(error=error)
         
+        
     ## Calls on error in slash_command.
     @Cog.listener(name="on_slash_command_error")
     async def on_slash_command_error(self, inter: AppCommandInteraction, error: Exception) -> None:
@@ -86,31 +89,29 @@ class Events(Cog):
             await inter.send(
                 embed=Embed(
                     description=f"""🛑 Sorry {author_mention}, but then using this command error occurs:\n{error}!**""",
-                    ephemeral=True,
                     color=Color.red(),
                     timestamp=datetime.now()
-                ).set_footer(text=inter.guild.name)
+                ).set_footer(text=inter.guild.name), ephemeral=True
             )
             
         ## If waiting time is out.
         elif isinstance(error, InteractionTimedOut):
             await inter.send(
                 embed=Embed(
-                    description=f"""🛑 Sorry {author_mention}, **waiting time is out!**""",
-                    ephemeral=True,
+                    description=f"""🛑 Sorry {author_mention}, but **waiting time is out!**""",
                     color=Color.red(),
                     timestamp=datetime.now()
-                ).set_footer(text=inter.guild.name)
+                ).set_footer(text=inter.guild.name), ephemeral=True
             )
+
         ## Other errors
         else:
             await inter.send(
                 embed=Embed(
                     description=f"""🛑 Sorry {author_mention}, but then using this command error occurs:\n{error}!**""",
-                    ephemeral=True,
                     color=Color.red(),
                     timestamp=datetime.now()
-                ).set_footer(text=inter.guild.name)
+                ).set_footer(text=inter.guild.name), ephemeral=True
             )
             error_logger(error=error)
 ## Setup bot cogs.

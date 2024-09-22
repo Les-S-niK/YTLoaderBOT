@@ -20,6 +20,7 @@ class Commands(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot: Bot = bot
 
+
     ## !exit
     @command(name="exit", description="Turn off the bot.", brief=f"{COMMAND_PREFIX}exit")
     @is_owner() 
@@ -46,7 +47,6 @@ class Commands(Cog):
                     \n<--------------------------------------->"
             )
         )
-        
         ## Turn off the Bot.
         exit()
         

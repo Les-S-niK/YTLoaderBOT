@@ -19,8 +19,6 @@ DESCRIPTION: str = "Bot for download youtube videos."
 OWNER_ID: list[int] = [989213469595283496, 1250875663108538555]
 ACTIVITY: Activity = Activity(
     name="Youtube",
-    state="In Youtube",
-    
 )
 
 ## Other constancts.
