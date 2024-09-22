@@ -6,6 +6,7 @@ from disnake.ext.commands import Bot
 from config import TOKEN, COMMAND_PREFIX, DESCRIPTION, OWNER_ID, ACTIVITY
 from bot_modules.bot_logger import start_logger, error_logger
 
+
 ## Create a bot instance:
 bot: Bot = Bot( 
     command_prefix=COMMAND_PREFIX,
